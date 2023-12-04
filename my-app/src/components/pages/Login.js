@@ -15,7 +15,7 @@ const Login = ({ handleLogin }) => {
 
   return (
     <div>
-      <h1>Login</h1>
+      <h1 style={{ color: "#3498db" }}>Login</h1>
       <form onSubmit={handleFormSubmit}>
         <input
           type="text"
@@ -29,7 +29,12 @@ const Login = ({ handleLogin }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
+        <button type="submit" 
+          style={{
+            backgroundColor: "#2ecc71",
+            color: "#fff",
+            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+          }} >Login</button>
       </form>
     </div>
   );

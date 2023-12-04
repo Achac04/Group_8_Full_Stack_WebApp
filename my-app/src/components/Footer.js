@@ -12,5 +12,17 @@ const Footer = () => (
       </div>
     </footer>
   );
+    const footerStyle ={   
+    
+    color: "#fff",
+    padding: "20px",
+    display: "flex",
+    justifyContent: "space-around",
+    alignItems: "flex-start",
+    }
+    const sectionStyle = {
+      maxWidth: "300px",
+      textAlign: "left",
+    };
   
   export default Footer;
