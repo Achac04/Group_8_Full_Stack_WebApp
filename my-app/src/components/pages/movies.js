@@ -193,7 +193,7 @@ function MoviesList() {
             onClick={handleLogout}
             style={{
               backgroundColor: '#e74c3c',
-              color: '#fff',
+              color: "#ff0",
               boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
               ':hover': {
                 backgroundColor: '#c0392b',
