@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { signIn } from 'next-auth/react';
 const Login = ({ handleLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -14,8 +14,8 @@ const Login = ({ handleLogin }) => {
   };
 
   return (
-    <div>
-      <h1 style={{ color: "#3498db" }}>Login</h1>
+    <div style={{ backgroundColor: "#1a1a1a", padding: "20px", color: "#3498db" }}>
+      <h1>Login</h1>
       <form onSubmit={handleFormSubmit}>
         <input
           type="text"
@@ -29,12 +29,21 @@ const Login = ({ handleLogin }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit" 
+        <button
+          type="submit"
           style={{
-            backgroundColor: "#2ecc71",
-            color: "#fff",
+            backgroundColor: "#3498db",
+            color: "#ff0", 
             boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-          }} >Login</button>
+            cursor: "pointer",
+            transition: "background-color 0.3s ease", 
+          }}
+         
+          onMouseOver={(e) => (e.target.style.backgroundColor = "#2ecc71")}
+          onMouseOut={(e) => (e.target.style.backgroundColor = "#3498db")}
+        >
+          Login
+        </button>
       </form>
     </div>
   );

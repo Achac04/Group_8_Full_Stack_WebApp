@@ -7,53 +7,60 @@ const Navbar = () => {
     await signOut();
   };
 
- 
-   
   return (
-    <div>
-      <h1 style={{ color: "#3498db" }}>Login</h1>
-      <form onSubmit={handleFormSubmit}>
-        <label>
-          Username:
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter your username"
-            required
-          />
-        </label>
-        <label>
-          Password:
-          <input
-            type={showPassword ? "text" : "password"}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
-            required
-          />
-          <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            style={{ marginLeft: "5px" }}
-          >
-            {showPassword ? "Hide" : "Show"}
-          </button>
-        </label>
-        <button
-          type="submit"
-          style={{
-            backgroundColor: "#2ecc71",
-            color: "#fff",
-            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-          }}
-        >
-          Login
-        </button>
-      </form>
-      {loginError && <p style={{ color: "#e74c3c" }}>{loginError}</p>}
-    </div>
+    <nav style={navStyle}>
+      <div style={logoStyle}>
+        <h2 style={{ margin: 0, color: "#3498db" }}>IMR</h2>
+      </div>
+      <div style={userInfoStyle}>
+        {session ? (
+          <div>
+            <p style={{ margin: 0, marginRight: "10px", color: "#2ecc71" }}>
+              Welcome, {session.user.username}!
+            </p>
+            <button
+              onClick={handleLogout}
+              style={logoutButtonStyle}
+            >
+              Logout
+            </button>
+          </div>
+        ) : (
+          <p style={{ margin: 0, color: "#e74c3c" }}>Not logged in</p>
+        )}
+      </div>
+    </nav>
   );
 };
 
+const navStyle = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  padding: "10px 20px",
+  backgroundColor: "#333",
+  color: "#fff",
+};
+
+const logoStyle = {
+  flex: 1,
+};
+
+const userInfoStyle = {
+  display: "flex",
+  alignItems: "center",
+};
+
+const logoutButtonStyle = {
+  backgroundColor: "#e74c3c",
+  color: "#fff",
+  border: "none",
+  padding: "8px 12px",
+  cursor: "pointer",
+  borderRadius: "4px",
+};
+
 export default Navbar;
+
+
+

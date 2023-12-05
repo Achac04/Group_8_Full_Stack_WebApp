@@ -1,3 +1,4 @@
+
 "use client";
 import { useState } from "react";
 import Login from "./Login";
@@ -95,118 +96,120 @@ function MoviesList() {
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "20px" }}>
-    {userType === "guest" ? (
-      <Login handleLogin={handleLogin} />
-    ) : (
-      <main>
-        <h1 style={{ color: "#3498db" }}>Movies List</h1>
-        <ul style={{ listStyle: "none", padding: 0 }}>
-          {movies.map((movie, index) => (
-            <li
-              key={index}
-              style={{
-                border: "1px solid #ddd",
-                borderRadius: "5px",
-                margin: "10px 0",
-                padding: "10px",
-              }}
-            >
-              <h2>Title: {movie.title}</h2>
-              <p>Actors: {movie.actors.join(", ")}</p>
-              <p>Release Year: {movie.releaseYear}</p>
-              {userType === "admin" && (
-                <div>
-                  <button
-                    onClick={() => handleEdit(index)}
-                    style={{
-                      backgroundColor: "#2ecc71",
-                      color: "#fff",
-                      marginRight: "5px",
-                      boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-                    }}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDelete(index)}
-                    style={{
-                      backgroundColor: "#e74c3c",
-                      color: "#fff",
-                      boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-                    }}
-                  >
-                    Delete
-                  </button>
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
-        {userType === "admin" && (
-          <div>
-            <h2>{editIndex !== null ? "Edit Movie" : "Add Movie"}</h2>
-            <input
-              type="text"
-              placeholder="Title"
-              value={newMovie.title}
-              onChange={(e) =>
-                setNewMovie({ ...newMovie, title: e.target.value })
-              }
-              style={{ margin: "5px" }}
-            />
-            <input
-              type="text"
-              placeholder="Actors (comma-separated)"
-              value={newMovie.actors.join(", ")}
-              onChange={(e) =>
-                setNewMovie({
-                  ...newMovie,
-                  actors: e.target.value.split(", "),
-                })
-              }
-              style={{ margin: "5px" }}
-            />
-            <input
-              type="text"
-              placeholder="Release Year"
-              value={newMovie.releaseYear}
-              onChange={(e) =>
-                setNewMovie({ ...newMovie, releaseYear: e.target.value })
-              }
-              style={{ margin: "5px" }}
-            />
-            <button
-              onClick={handleSave}
-              style={{
-                backgroundColor: "#3498db",
-                color: "#fff",
-                margin: "5px",
-                boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              {editIndex !== null ? "Save" : "Add"}
-            </button>
-          </div>
-        )}
-        <h2>Logout</h2>
-        <button
-          onClick={handleLogout}
-          style={{
-            backgroundColor: "#e74c3c",
-            color: "#fff",
-            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-          }}
-        >
-          Logout
-        </button>
-      </main>
-    )}
+    <div style={{ fontFamily: 'Arial, sans-serif', textAlign: 'center', backgroundColor: '#000', color: '#fff' }}>
+      {userType === 'guest' ? (
+        <Login handleLogin={handleLogin} />
+      ) : (
+        <main style={{ margin: '20px', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto', backgroundColor: '#000' }}>
+          <h1 style={{ color: '#3498db' }}>Movies List</h1>
+          <ul style={{ listStyle: 'none', padding: 0 , fontFamily: 'monospace'}}>
+            {movies.map((movie, index) => (
+              <li
+                key={index}
+                style={{
+                  border: '1px solid #ddd',
+                  borderRadius: '5px',
+                  margin: '10px 0',
+                  padding: '10px',
+                  backgroundColor: 'black',
+                }}
+              >
+                <h2 style = {{color: 'green'}}>Title: {movie.title}</h2>
+                <p style = {{color: 'purple'}}>Actors: {movie.actors.join(', ')}</p>
+                <p style = {{color: 'purple'}}>Release Year: {movie.releaseYear}</p>
+                {userType === 'admin' && (
+                  <div>
+                    <button
+                      onClick={() => handleEdit(index)}
+                      style={{
+                        backgroundColor: '#2ecc71',
+                        color: '#fff',
+                        marginRight: '5px',
+                        boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+                      }}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(index)}
+                      style={{
+                        backgroundColor: '#e74c3c',
+                        color: '#fff',
+                        boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+                      }}
+                     
+                    >
+                      Delete
+                    </button>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+          {userType === 'admin' && (
+            <div style={{ margin: '20px' }}>
+              <h2>{editIndex !== null ? 'Edit Movie' : 'Add Movie'}</h2>
+              <input
+                type="text"
+                placeholder="Title"
+                value={newMovie.title}
+                onChange={(e) => setNewMovie({ ...newMovie, title: e.target.value })}
+                style={{ margin: '5px' }}
+              />
+              <input
+                type="text"
+                placeholder="Actors (comma-separated)"
+                value={newMovie.actors.join(', ')}
+                onChange={(e) =>
+                  setNewMovie({
+                    ...newMovie,
+                    actors: e.target.value.split(', '),
+                  })
+                }
+                style={{ margin: '5px' }}
+              />
+              <input
+                type="text"
+                placeholder="Release Year"
+                value={newMovie.releaseYear}
+                onChange={(e) => setNewMovie({ ...newMovie, releaseYear: e.target.value })}
+                style={{ margin: '5px' }}
+              />
+              <button
+                onClick={handleSave}
+                style={{
+                  backgroundColor: '#3498db',
+                  color: '#fff',
+                  margin: '5px',
+                  boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                {editIndex !== null ? 'Save' : 'Add'}
+              </button>
+            </div>
+          )}
+          <h2 style={{ color: '#3498db' }}>Logout</h2>
+          <button
+            onClick={handleLogout}
+            style={{
+              backgroundColor: '#e74c3c',
+              color: '#fff',
+              boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+              ':hover': {
+                backgroundColor: '#c0392b',
+              },
+            }}
+            onMouseOver={(e) => (e.target.style.backgroundColor = "#2ecc71")}
+            onMouseOut={(e) => (e.target.style.backgroundColor = "#3498db")}
+          >
+            Logout
+          </button>
+        </main>
+      )}
 
-    <Footer />
-  </div>
-);
+      <Footer />
+    </div>
+  );
 }
-
 
 export default MoviesList;
