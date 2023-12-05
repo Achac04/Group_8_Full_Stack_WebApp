@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { signIn } from 'next-auth/react';
 const Login = ({ handleLogin }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
